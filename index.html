@@ -3,8 +3,6 @@
 <head>
   <meta charset="utf-8">
   <title>Hello Analytics Reporting API V4</title>
-  <meta name="google-signin-client_id" content="984409945122-af2noccvetek2u412n90gvv9faj19nk6.apps.googleusercontent.com">
-  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
 </head>
 <body>
 
@@ -16,41 +14,7 @@
 <!-- The API response will be printed here. -->
 <textarea cols="80" rows="20" id="query-output"></textarea>
 
-<script>
-  // Replace with your view ID.
-  var VIEW_ID = '211632614';
 
-  // Query the API and print the results to the page.
-  function queryReports() {
-    gapi.client.request({
-      path: '/v4/reports:batchGet',
-      root: 'https://analyticsreporting.googleapis.com/',
-      method: 'POST',
-      body: {
-        reportRequests: [
-          {
-            viewId: VIEW_ID,
-            dateRanges: [
-              {
-                startDate: '7daysAgo',
-                endDate: 'today'
-              }
-            ],
-            metrics: [
-              {
-                expression: 'ga:sessions'
-              }
-            ]
-          }
-        ]
-      }
-    }).then(displayResults, console.error.bind(console));
-  }
-
-  function displayResults(response) {
-    var formattedJson = JSON.stringify(response.result, null, 2);
-    document.getElementById('query-output').value = formattedJson;
-  }
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157912567-3"></script>
 <script>
@@ -61,10 +25,7 @@
   gtag('config', 'UA-157912567-3');
 </script>
 
-</script>
 
-<!-- Load the JavaScript API client and Sign-in library. -->
-<script src="https://apis.google.com/js/client:platform.js"></script>
 
 </body>
 </html>
